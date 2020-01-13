@@ -1,0 +1,60 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!--Themes-->
+
+    <style name="SplashTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryDark">@color/primaryDark</item>
+        <item name="colorAccent">@color/accent</item>
+
+        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+
+        <item name="android:windowBackground">@drawable/splash_background</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+    </style>
+
+    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight">
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryDark">@color/primaryDark</item>
+        <item name="colorAccent">@color/accent</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
+    </style>
+
+    <style name="AppTheme.BackgroundStyle">
+        <item name="android:background">@color/primaryLight</item>
+    </style>
+
+    <style name="AppTheme.SurfaceStyle">
+        <item name="android:foreground">?android:attr/selectableItemBackground</item>
+        <item name="android:background">@color/primary</item>
+    </style>
+
+    <style name="AppTheme.FloatingActionButton" parent="@style/Widget.MaterialComponents.FloatingActionButton">
+        <item name="tint">@color/primary</item>
+        <item name="backgroundTint">@color/accent</item>
+    </style>
+
+    <!--Text appearances-->
+    <style name="TextAppearance.Title" parent="@style/TextAppearance.MaterialComponents.Headline6">
+        <item name="android:textColor">@color/textHeadline</item>
+    </style>
+
+    <style name="TextAppearance.CardTitle" parent="@style/TextAppearance.MaterialComponents.Body1">
+        <item name="android:textColor">@color/textBody</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:lines">1</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="TextAppearance.Body" parent="@style/TextAppearance.MaterialComponents.Body1">
+        <item name="android:textColor">@color/textBody</item>
+    </style>
+
+    <style name="CustomProgressDialog" parent="android:Theme.Holo.Light.Dialog.NoActionBar">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+</resources>

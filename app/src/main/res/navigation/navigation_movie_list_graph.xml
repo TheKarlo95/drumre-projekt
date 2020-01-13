@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_movie_list_graph"
+    app:startDestination="@+id/movie_list_fragment"
+    tools:ignore="UnusedNavigation">
+    <fragment
+        android:id="@+id/movie_list_fragment"
+        android:name="hr.fer.drumre.rec.features.movies.list.MovieListFragment"
+        android:label="Movies">
+        <action
+            android:id="@+id/go_to_details"
+            app:destination="@+id/movie_detail_fragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@+id/movie_list_fragment"/>
+    </fragment>
+    <fragment
+        android:id="@+id/movie_detail_fragment"
+        android:name="hr.fer.drumre.rec.features.movies.detail.MovieDetailFragment">
+        <argument
+            android:name="movie"
+            app:argType="hr.fer.drumre.rec.core.network.model.Movie" />
+    </fragment>
+</navigation>

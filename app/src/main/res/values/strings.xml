@@ -1,0 +1,72 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">REC°</string>
+
+    <!--Drawer items-->
+    <string name="drawer_movies">Movies</string>
+    <string name="drawer_shows">Shows</string>
+
+    <!--Home tab items-->
+    <string name="home_tab_all">All</string>
+    <string name="home_tab_recommendations">Recommendations</string>
+    <string name="home_tab_favorites">Favorites</string>
+    <string name="home_tab_random">Random</string>
+
+    <!--Home toolbar items-->
+    <string name="home_toolbar_theme">Toggle Theme</string>
+
+    <!--Movie list-->
+    <string name="movie_list_empty_text">Empty movies list</string>
+    <string name="movie_list_error_text">Ups… an error occurred on obtain movies, please swipe down to try again</string>
+    <string name="movie_list_add_error_text">Error on fetch more movies</string>
+    <string name="movie_list_add_retry_button">Retry</string>
+
+
+    <!--Movie recommendations list-->
+    <string name="movie_recommendations_empty_text">Empty recommendations list</string>
+    <string name="movie_recommendations_error_text">Ups… an error occurred on obtain movie recommendations, please swipe down to try again</string>
+    <string name="movie_recommendations_add_error_text">Error on fetch more movie recommendations</string>
+    <string name="movie_recommendations_add_retry_button">Retry</string>
+
+    <!--Movie favorites list-->
+    <string name="movie_favorites_empty_text">Empty favorites list</string>
+    <string name="movie_favorites_error_text">Ups… an error occurred on obtain favorite movies, please swipe down to try again</string>
+    <string name="movie_favorites_add_error_text">Error on fetch more favorite movies</string>
+    <string name="movie_favorites_add_retry_button">Retry</string>
+
+    <!--Character detail-->
+    <string name="movie_detail_dialog_loading_text">Loading detail…</string>
+    <string name="movie_detail_dialog_error_text">Error on obtain detail, please try later.</string>
+    <string name="movie_detail_added_to_favorite_message">Added to your favorite movies</string>
+    <string name="movie_detail_removed_from_favorite_message">Removed from your favorite movies</string>
+    <string name="movie_detail_image_content_description">Image of the selected movie</string>
+
+    <!--Show list-->
+    <string name="show_list_empty_text">Empty shows list</string>
+    <string name="show_list_error_text">Ups… an error occurred on obtain shows, please swipe down to try again</string>
+    <string name="show_list_add_error_text">Error on fetch more shows</string>
+    <string name="show_list_add_retry_button">Retry</string>
+
+    <!--Show recommendations list-->
+    <string name="show_recommendations_empty_text">Empty recommendations list</string>
+    <string name="show_recommendations_error_text">Ups… an error occurred on obtain show recommendations, please swipe down to try again</string>
+    <string name="show_recommendations_add_error_text">Error on fetch more show recommendations</string>
+    <string name="show_recommendations_add_retry_button">Retry</string>
+
+    <!--Show favorites list-->
+    <string name="show_favorites_empty_text">Empty favorites list</string>
+    <string name="show_favorites_error_text">Ups… an error occurred on obtain favorite shows, please swipe down to try again</string>
+    <string name="show_favorites_add_error_text">Error on fetch more favorite shows</string>
+    <string name="show_favorites_add_retry_button">Retry</string>
+
+    <!--Show detail-->
+    <string name="show_detail_dialog_loading_text">Loading detail…</string>
+    <string name="show_detail_dialog_error_text">Error on obtain detail, please try later.</string>
+    <string name="show_detail_added_to_favorite_message">Added to your favorite shows</string>
+    <string name="show_detail_removed_from_favorite_message">Removed from your favorite shows</string>
+    <string name="show_detail_image_content_description">Image of the selected show</string>
+
+    <string name="facebook_app_id">2950366454997674</string>
+    <string name="fb_login_protocol_scheme">fb2950366454997674</string>
+
+    <string name="server_client_id" tools:ignore="TypographyDashes">927381726161-8somi26bhk9bh68mgvv6ks279g3k1shg.apps.googleusercontent.com</string>
+</resources>

@@ -1,0 +1,80 @@
+apply plugin: "com.android.application"
+apply plugin: "kotlin-android"
+apply plugin: "kotlin-android-extensions"
+apply plugin: "kotlin-kapt"
+apply plugin: "androidx.navigation.safeargs.kotlin"
+apply plugin: "com.google.gms.google-services"
+
+android {
+    compileSdkVersion BuildAndroidConfig.COMPILE_SDK_VERSION
+    buildToolsVersion BuildAndroidConfig.BUILD_TOOLS_VERSION
+
+    defaultConfig {
+        applicationId BuildAndroidConfig.APPLICATION_ID
+        minSdkVersion BuildAndroidConfig.MIN_SDK_VERSION
+        targetSdkVersion BuildAndroidConfig.TARGET_SDK_VERSION
+        versionCode BuildAndroidConfig.VERSION_CODE
+        versionName BuildAndroidConfig.VERSION_NAME
+        testInstrumentationRunner BuildAndroidConfig.TEST_INSTRUMENTATION_RUNNER
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
+
+    dataBinding {
+        enabled = true
+    }
+}
+dependencies {
+    implementation(Dependencies.KOTLIN)
+    implementation(Dependencies.COROUTINES)
+    implementation(Dependencies.COROUTINES_ANDROID)
+
+    implementation(Dependencies.APPCOMPAT)
+    implementation(Dependencies.CONSTRAINT_LAYOUT)
+    implementation(Dependencies.CORE_KTX)
+    implementation(Dependencies.FRAGMENT_KTX)
+    implementation(Dependencies.MATERIAL)
+    implementation(Dependencies.SWIPE_REFRESH_LAYOUT)
+
+    implementation(Dependencies.NAVIGATION_FRAGMENT)
+    implementation(Dependencies.NAVIGATION_UI)
+
+    implementation(Dependencies.LIFECYCLE_EXTENSIONS)
+    implementation(Dependencies.LIFECYCLE_VIEWMODEL)
+
+    implementation(Dependencies.PAGING)
+
+    implementation(Dependencies.COIL)
+
+    implementation(Dependencies.DAGGER)
+
+    implementation(Dependencies.TIMBER)
+
+    implementation(Dependencies.RETROFIT)
+    implementation(Dependencies.RETROFIT_CONVERTER)
+    implementation(Dependencies.LOGGING)
+
+    implementation("com.facebook.android:facebook-login:5.13.0")
+    implementation("com.google.android.gms:play-services-auth:17.0.0")
+
+    kapt(AnnotationProcessorsDependencies.DAGGER)
+    kapt(AnnotationProcessorsDependencies.DATABINDING)
+}
+repositories {
+    mavenCentral()
+}
+

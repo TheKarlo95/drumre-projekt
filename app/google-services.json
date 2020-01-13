@@ -1,0 +1,106 @@
+{
+  "project_info": {
+    "project_number": "1076729749358",
+    "firebase_url": "https://movie-app-193a2.firebaseio.com",
+    "project_id": "movie-app-193a2",
+    "storage_bucket": "movie-app-193a2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1076729749358:android:bc30e111ec9584f7376b7f",
+        "android_client_info": {
+          "package_name": "hr.fer.drumre.movieapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1076729749358-ajvdnnrmnuu72ba5cttjvfms15atkav1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCezGT6bthbSayjFm9Ny0ZyG8PzCQXomjg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1076729749358-8u208quh96uvn5nrne2fmjcqn9f8upia.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1076729749358:android:7708d149b5dc63a7376b7f",
+        "android_client_info": {
+          "package_name": "hr.fer.drumre.rec"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1076729749358-b97hmf6hs8q1e60jt1sd940hai85pv27.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "hr.fer.drumre.rec",
+            "certificate_hash": "c5c448c15690208212c1c2730009dc8374a845d4"
+          }
+        },
+        {
+          "client_id": "1076729749358-ajvdnnrmnuu72ba5cttjvfms15atkav1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCezGT6bthbSayjFm9Ny0ZyG8PzCQXomjg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1076729749358-8u208quh96uvn5nrne2fmjcqn9f8upia.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1076729749358:android:e9e0baec83f6e7f3376b7f",
+        "android_client_info": {
+          "package_name": "hr.fer.movieapp.dev.debug"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1076729749358-ajvdnnrmnuu72ba5cttjvfms15atkav1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCezGT6bthbSayjFm9Ny0ZyG8PzCQXomjg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1076729749358-8u208quh96uvn5nrne2fmjcqn9f8upia.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="UnusedIds">
+    <item
+        android:id="@+id/navigation_movie_list_graph"
+        android:icon="@drawable/ic_list"
+        android:title="@string/home_tab_all" />
+    <item
+        android:id="@+id/navigation_movie_recommendations_graph"
+        android:icon="@drawable/ic_recommendations"
+        android:title="@string/home_tab_recommendations" />
+    <item
+        android:id="@+id/navigation_movie_favorites_graph"
+        android:icon="@drawable/ic_favorite"
+        android:title="@string/home_tab_favorites" />
+    <item
+        android:id="@+id/navigation_movie_random_graph"
+        android:icon="@drawable/ic_favorites"
+        android:title="@string/home_tab_random" />
+</menu>

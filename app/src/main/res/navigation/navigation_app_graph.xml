@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/navigation_app_graph"
+    app:startDestination="@+id/movies_home">
+
+    <fragment
+        android:id="@+id/movies_home"
+        android:name="hr.fer.drumre.rec.features.home.movies.MoviesHomeFragment"
+        android:label="@string/drawer_movies"
+        tools:layout="@layout/fragment_movies_home"/>
+
+    <fragment
+        android:id="@+id/shows_home"
+        android:name="hr.fer.drumre.rec.features.home.shows.ShowsHomeFragment"
+        android:label="@string/drawer_shows"
+        tools:layout="@layout/fragment_shows_home"/>
+</navigation>
