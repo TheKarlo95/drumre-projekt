@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
-import android.view.MenuInflater
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
@@ -13,10 +12,10 @@ import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.google.android.material.navigation.NavigationView
-import hr.fer.drumre.rec.core.utils.ThemeUtils
 import hr.fer.drumre.rec.core.utils.ThemeUtilsImpl
+import hr.fer.drumre.rec.core.utils.UserPreferencesImpl
 import hr.fer.drumre.rec.features.login.menu.ToggleThemeCheckBox
-import javax.inject.Inject
+import hr.fer.drumre.rec.features.splash.SplashActivity
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -51,6 +50,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         when (item.itemId) {
             R.id.nav_movies -> navController.navigate(R.id.movies_home)
             R.id.nav_shows -> navController.navigate(R.id.shows_home)
+            R.id.nav_logout -> logout()
             else -> return false
         }
 
@@ -81,6 +81,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         NavigationUI.setupActionBarWithNavController(this, navController, drawerLayout)
         NavigationUI.setupWithNavController(navigationView, navController)
         navigationView.setNavigationItemSelectedListener(this)
+    }
+
+    private fun logout() {
+        val userPreferences = UserPreferencesImpl(this)
+        userPreferences.set(null, null)
+        SplashActivity.startWith(this)
     }
 
     companion object {

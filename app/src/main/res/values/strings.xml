@@ -4,6 +4,7 @@
     <!--Drawer items-->
     <string name="drawer_movies">Movies</string>
     <string name="drawer_shows">Shows</string>
+    <string name="drawer_logout">Logout</string>
 
     <!--Home tab items-->
     <string name="home_tab_all">All</string>
@@ -68,5 +69,5 @@
     <string name="facebook_app_id">2950366454997674</string>
     <string name="fb_login_protocol_scheme">fb2950366454997674</string>
 
-    <string name="server_client_id" tools:ignore="TypographyDashes">927381726161-8somi26bhk9bh68mgvv6ks279g3k1shg.apps.googleusercontent.com</string>
+    <string name="server_client_id" tools:ignore="TypographyDashes">1076729749358-8u208quh96uvn5nrne2fmjcqn9f8upia.apps.googleusercontent.com</string>
 </resources>

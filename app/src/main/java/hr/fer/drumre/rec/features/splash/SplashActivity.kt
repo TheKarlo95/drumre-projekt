@@ -1,5 +1,7 @@
 package hr.fer.drumre.rec.features.splash
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
@@ -14,7 +16,7 @@ class SplashActivity : AppCompatActivity() {
 
         Handler().postDelayed({
             val userPreferences = UserPreferencesImpl(applicationContext)
-            if(true) {
+            if(userPreferences.isLoggedIn()) {
                 MainActivity.startWith(this)
             } else {
                 LoginActivity.startWith(this)
@@ -24,5 +26,13 @@ class SplashActivity : AppCompatActivity() {
 
     companion object {
         private const val DELAY = 250L
+
+        fun startWith(context: Context) {
+            val intent = Intent(context, LoginActivity::class.java).apply {
+                addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            }
+            context.startActivity(intent)
+        }
     }
 }

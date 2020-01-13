@@ -8,5 +8,8 @@
         <item
             android:id="@+id/nav_shows"
             android:title="@string/drawer_shows"/>
+        <item
+            android:id="@+id/nav_logout"
+            android:title="@string/drawer_logout"/>
     </group>
 </menu>

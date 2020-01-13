@@ -7,9 +7,9 @@ import retrofit2.http.Query
 
 interface UserService {
 
-    @GET("/User")
+    @GET("User")
     suspend fun get(): List<User>
 
     @POST("User/Login")
-    suspend fun login(): User
+    suspend fun login()
 }

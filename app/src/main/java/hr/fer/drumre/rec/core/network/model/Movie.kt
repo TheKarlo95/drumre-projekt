@@ -23,5 +23,9 @@ data class Movie(
     @SerializedName("isFavourite") val isFavorite: Boolean
 ) : Parcelable {
     val image: String
-        get() = "https://image.tmdb.org/t/p/w500$posterPath"
+        get() = if(posterPath?.startsWith("http") == true) {
+            posterPath
+        } else {
+            "https://image.tmdb.org/t/p/w500$posterPath"
+        }
 }

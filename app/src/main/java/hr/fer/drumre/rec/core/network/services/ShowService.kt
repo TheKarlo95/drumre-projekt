@@ -37,11 +37,11 @@ interface ShowService {
 
     @PUT("Favourites/Show")
     suspend fun addToFavorites(
-        @Query("movieId") movieId: Long
+        @Query("showId") showId: Long
     )
 
     @DELETE("Favourites/Show")
     suspend fun removeFromFavorites(
-        @Query("movieId") movieId: Long
+        @Query("showId") showId: Long
     )
 }

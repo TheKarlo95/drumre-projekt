@@ -52,7 +52,7 @@ class ShowDetailViewModel @Inject constructor(
             viewModelScope.launch {
                 try {
                     showService.addToFavorites(it.id)
-                    data.value?.copy(isFavorite = true)?.let(_data::postValue)
+                    _data.postValue(it.copy(isFavorite = true))
                     _state.postValue(ShowDetailViewState.AddedToFavorite)
                 } catch (e: Exception) {
                     Timber.e(e)
@@ -66,7 +66,7 @@ class ShowDetailViewModel @Inject constructor(
             viewModelScope.launch {
                 try {
                     showService.removeFromFavorites(it.id)
-                    data.value?.copy(isFavorite = true)?.let(_data::postValue)
+                    _data.postValue(it.copy(isFavorite = false))
                     _state.postValue(ShowDetailViewState.RemovedFromFavorite)
                 } catch (e: Exception) {
                     Timber.e(e)

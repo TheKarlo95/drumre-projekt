@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import hr.fer.drumre.rec.core.network.services.UserService
 import hr.fer.drumre.rec.core.utils.UserPreferences
 import kotlinx.coroutines.launch
+import timber.log.Timber
 import javax.inject.Inject
 
 open class LoginViewModel @Inject constructor(
@@ -15,7 +16,11 @@ open class LoginViewModel @Inject constructor(
         if (accessToken != null) {
             userPreferences.setFacebookAccessToken(accessToken)
             viewModelScope.launch {
-                userService.login()
+                try {
+                    userService.login()
+                } catch (e: Exception) {
+                    Timber.e(e)
+                }
             }
         }
     }
@@ -24,7 +29,11 @@ open class LoginViewModel @Inject constructor(
         if (accessToken != null) {
             userPreferences.setGoogleAccessToken(accessToken)
             viewModelScope.launch {
-                userService.login()
+                try {
+                    userService.login()
+                } catch (e: Exception) {
+                    Timber.e(e)
+                }
             }
         }
     }

@@ -75,7 +75,7 @@
             android:onClick="@{() -> viewModel.addShowToFavorite()}"
             app:layout_anchor="@id/appbar"
             app:layout_anchorGravity="bottom|end"
-            app:srcCompat="@drawable/ic_favorite"
+            app:srcCompat="@drawable/ic_unfavorite"
             app:visible="@{!viewModel.data.isFavorite}" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -87,7 +87,7 @@
             android:onClick="@{() -> viewModel.removeShowFromFavorite()}"
             app:layout_anchor="@id/appbar"
             app:layout_anchorGravity="bottom|end"
-            app:srcCompat="@drawable/ic_unfavorite"
+            app:srcCompat="@drawable/ic_favorite"
             app:visible="@{viewModel.data.isFavorite}" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
