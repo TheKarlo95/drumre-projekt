@@ -43,7 +43,7 @@
                     android:layout_height="?attr/actionBarSize"
                     app:contentInsetStartWithNavigation="0dp"
                     app:layout_collapseMode="pin"
-                    app:navigationIcon="@android:drawable/ic_menu_close_clear_cancel"
+                    app:shouldShowCloseIcon="@{viewModel.data.id > 0}"
                     app:navigationOnClickListener="@{() -> viewModel.dismissCharacterDetail()}" />
 
             </com.google.android.material.appbar.CollapsingToolbarLayout>
@@ -67,7 +67,6 @@
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/add_favorite_button"
-            style="@style/AppTheme.FloatingActionButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/character_detail_floating_button_margin"
@@ -76,11 +75,10 @@
             app:layout_anchor="@id/appbar"
             app:layout_anchorGravity="bottom|end"
             app:srcCompat="@drawable/ic_unfavorite"
-            app:visible="@{!viewModel.data.isFavorite}" />
+            app:visible="@{!viewModel.data.isFavorite &amp;&amp; viewModel.data.id > 0L}" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/remove_favorite_button"
-            style="@style/AppTheme.FloatingActionButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/character_detail_floating_button_margin"
@@ -88,7 +86,7 @@
             app:layout_anchor="@id/appbar"
             app:layout_anchorGravity="bottom|end"
             app:srcCompat="@drawable/ic_favorite"
-            app:visible="@{viewModel.data.isFavorite}" />
+            app:visible="@{viewModel.data.isFavorite &amp;&amp; viewModel.data.id > 0L}" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

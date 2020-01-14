@@ -11,6 +11,7 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
+import com.facebook.AccessToken
 import com.google.android.material.navigation.NavigationView
 import hr.fer.drumre.rec.core.utils.ThemeUtilsImpl
 import hr.fer.drumre.rec.core.utils.UserPreferencesImpl
@@ -86,6 +87,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     private fun logout() {
         val userPreferences = UserPreferencesImpl(this)
         userPreferences.set(null, null)
+        AccessToken.setCurrentAccessToken(null)
         SplashActivity.startWith(this)
     }
 

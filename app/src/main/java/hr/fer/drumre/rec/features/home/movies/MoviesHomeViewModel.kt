@@ -26,7 +26,8 @@ open class MoviesHomeViewModel : ViewModel() {
         @JvmStatic private val MOVIE_NAV_FRAGMENTS_ID = intArrayOf(
             R.id.movie_list_fragment,
             R.id.movie_recommendations_fragment,
-            R.id.movie_favorites_fragment
+            R.id.movie_favorites_fragment,
+            R.id.random_movie_fragment
         )
     }
 }

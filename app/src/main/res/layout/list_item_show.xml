@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="show"
             type="hr.fer.drumre.rec.core.network.model.Show" />
@@ -18,12 +19,12 @@
         android:onClick="@{() -> viewModel.openShowDetail(show)}"
         app:cardCornerRadius="@dimen/characters_list_item_corner_radius"
         app:cardElevation="@dimen/characters_list_item_elevation"
-        app:cardBackgroundColor="@android:color/transparent">
+        app:shapeAppearance="?attr/shapeAppearanceSmallComponent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            style="@style/AppTheme.SurfaceStyle"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/AppTheme.SurfaceStyle">
+            android:layout_height="wrap_content">
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/show_image"
@@ -39,6 +40,7 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/show_title"
+                style="@style/TextAppearance.CardTitle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/characters_list_item_text_padding"
@@ -47,8 +49,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="parent"
-                tools:text="Show title"
-                style="@style/TextAppearance.CardTitle" />
+                tools:text="Show title" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </com.google.android.material.card.MaterialCardView>

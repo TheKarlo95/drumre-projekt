@@ -67,7 +67,6 @@
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/add_favorite_button"
-            style="@style/AppTheme.FloatingActionButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/character_detail_floating_button_margin"
@@ -76,11 +75,10 @@
             app:layout_anchor="@id/appbar"
             app:layout_anchorGravity="bottom|end"
             app:srcCompat="@drawable/ic_unfavorite"
-            app:visible="@{!viewModel.data.isFavorite}" />
+            app:visible="@{!viewModel.data.isFavorite &amp;&amp; viewModel.data.id > 0L}" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/remove_favorite_button"
-            style="@style/AppTheme.FloatingActionButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/character_detail_floating_button_margin"
@@ -88,7 +86,7 @@
             app:layout_anchor="@id/appbar"
             app:layout_anchorGravity="bottom|end"
             app:srcCompat="@drawable/ic_favorite"
-            app:visible="@{viewModel.data.isFavorite}" />
+            app:visible="@{viewModel.data.isFavorite &amp;&amp; viewModel.data.id > 0L}" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

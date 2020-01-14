@@ -26,7 +26,8 @@ open class ShowsHomeViewModel : ViewModel() {
         @JvmStatic private val SHOW_NAV_FRAGMENTS_ID = intArrayOf(
             R.id.show_list_fragment,
             R.id.show_recommendations_fragment,
-            R.id.show_favorites_fragment
+            R.id.show_favorites_fragment,
+            R.id.random_show_fragment
         )
     }
 }

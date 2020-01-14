@@ -40,6 +40,7 @@
     <string name="movie_detail_added_to_favorite_message">Added to your favorite movies</string>
     <string name="movie_detail_removed_from_favorite_message">Removed from your favorite movies</string>
     <string name="movie_detail_image_content_description">Image of the selected movie</string>
+    <string name="movie_detail_nytimes_review">Read NYTimes Review</string>
 
     <!--Show list-->
     <string name="show_list_empty_text">Empty shows list</string>
@@ -65,6 +66,7 @@
     <string name="show_detail_added_to_favorite_message">Added to your favorite shows</string>
     <string name="show_detail_removed_from_favorite_message">Removed from your favorite shows</string>
     <string name="show_detail_image_content_description">Image of the selected show</string>
+    <string name="rating_format">%1$.2f / 10</string>
 
     <string name="facebook_app_id">2950366454997674</string>
     <string name="fb_login_protocol_scheme">fb2950366454997674</string>

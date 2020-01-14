@@ -1,7 +1,11 @@
 package hr.fer.drumre.rec.features.movies.detail
 
+import android.graphics.Color
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.View
+import androidx.core.content.ContextCompat
+import androidx.core.graphics.drawable.DrawableCompat
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.google.android.material.snackbar.Snackbar
@@ -24,6 +28,13 @@ class MovieDetailFragment : BaseFragment<FragmentMovieDetailBinding, MovieDetail
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         observe(viewModel.state, ::onViewStateChange)
+
+        val fab = viewBinding.removeFavoriteButton
+        val fabDrawable: Drawable = fab.drawable
+        DrawableCompat.setTint(
+            fabDrawable,
+            ContextCompat.getColor(requireContext(), R.color.favorite_red)
+        )
 
         try {
             if (arguments == null) {

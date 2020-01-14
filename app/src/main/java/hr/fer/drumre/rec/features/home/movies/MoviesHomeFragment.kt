@@ -1,16 +1,17 @@
 package hr.fer.drumre.rec.features.home.movies
 
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.View
+import androidx.core.graphics.drawable.DrawableCompat
 import androidx.lifecycle.Observer
-import androidx.navigation.ui.NavigationUI.setupActionBarWithNavController
 import hr.fer.drumre.rec.App
+import hr.fer.drumre.rec.R
 import hr.fer.drumre.rec.commons.ui.base.BaseFragment
 import hr.fer.drumre.rec.commons.ui.extensions.setupWithNavController
 import hr.fer.drumre.rec.core.utils.ThemeUtils
-import hr.fer.drumre.rec.R
 import hr.fer.drumre.rec.databinding.FragmentMoviesHomeBinding
 import hr.fer.drumre.rec.features.home.movies.di.DaggerMoviesHomeComponent
 import hr.fer.drumre.rec.features.home.movies.di.MoviesHomeModule

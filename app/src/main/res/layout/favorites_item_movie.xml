@@ -30,7 +30,7 @@
                 android:layout_height="@dimen/characters_list_item_size"
                 android:scaleType="centerCrop"
                 app:imageUrl="@{movie.image}"
-                app:layout_constraintBottom_toTopOf="@+id/character_name"
+                app:layout_constraintBottom_toTopOf="@+id/movie_title"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"

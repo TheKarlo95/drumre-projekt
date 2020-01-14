@@ -17,7 +17,7 @@
         android:onClick="@{() -> viewModel.openShowDetail(show)}"
         app:cardCornerRadius="@dimen/characters_list_item_corner_radius"
         app:cardElevation="@dimen/characters_list_item_elevation"
-        app:cardBackgroundColor="@android:color/transparent">
+        app:shapeAppearance="?attr/shapeAppearanceSmallComponent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

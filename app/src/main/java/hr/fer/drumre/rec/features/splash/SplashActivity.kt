@@ -21,6 +21,7 @@ class SplashActivity : AppCompatActivity() {
             } else {
                 LoginActivity.startWith(this)
             }
+            finish()
         }, DELAY)
     }
 

@@ -38,8 +38,8 @@ class ShowDetailViewModel @Inject constructor(
         _state.postValue(ShowDetailViewState.Loading)
         viewModelScope.launch {
             try {
-                val movie = showService.getRandom()
-                _data.postValue(movie)
+                val show = showService.getRandom()
+                _data.postValue(show)
                 _state.postValue(ShowDetailViewState.Loaded)
             } catch (e: Exception) {
                 _state.postValue(ShowDetailViewState.Error)

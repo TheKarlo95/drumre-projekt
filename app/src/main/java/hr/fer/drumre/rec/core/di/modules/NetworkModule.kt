@@ -1,5 +1,6 @@
 package hr.fer.drumre.rec.core.di.modules
 
+import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides
 import hr.fer.drumre.rec.BuildConfig
@@ -49,7 +50,13 @@ class NetworkModule {
         Retrofit.Builder()
             .client(client)
             .baseUrl("https://dm2019.azurewebsites.net/api/")
-            .addConverterFactory(GsonConverterFactory.create())
+            .addConverterFactory(
+                GsonConverterFactory.create(
+                    GsonBuilder()
+                        .setDateFormat("yyyy-MM-dd'T'HH:mm:ss")
+                        .create()
+                )
+            )
             .build()
 
     @Singleton
