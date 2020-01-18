@@ -5,7 +5,7 @@ import dagger.Module
 import dagger.Provides
 import hr.fer.drumre.rec.commons.ui.extensions.viewModel
 import hr.fer.drumre.rec.core.di.scopes.FeatureScope
-import hr.fer.drumre.rec.core.network.services.MovieService
+import hr.fer.drumre.rec.core.repository.MovieRepository
 import hr.fer.drumre.rec.features.movies.list.MovieListFragment
 import hr.fer.drumre.rec.features.movies.list.MovieListViewModel
 import hr.fer.drumre.rec.features.movies.list.adapter.MovieListAdapter
@@ -23,9 +23,9 @@ class MovieListModule(private val fragment: MovieListFragment) {
     @Provides
     fun providesMoviePageDataSource(
         viewModel: MovieListViewModel,
-        movieService: MovieService
+        movieRepository: MovieRepository
     ) = MoviePageDataSource(
-        movieService = movieService,
+        movieRepository = movieRepository,
         scope = viewModel.viewModelScope
     )
 

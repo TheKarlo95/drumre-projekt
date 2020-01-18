@@ -4,15 +4,15 @@ import androidx.lifecycle.MutableLiveData
 import androidx.paging.PageKeyedDataSource
 import hr.fer.drumre.rec.core.network.NetworkState
 import hr.fer.drumre.rec.core.network.model.Movie
-import hr.fer.drumre.rec.core.network.services.MovieService
-import javax.inject.Inject
+import hr.fer.drumre.rec.core.repository.MovieRepository
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 import timber.log.Timber
+import javax.inject.Inject
 
 open class MovieRecommendationDataSource @Inject constructor(
-    private val movieService: MovieService,
+    private val movieRepository: MovieRepository,
     private val scope: CoroutineScope
 ) : PageKeyedDataSource<Int, Movie>() {
 
@@ -31,7 +31,7 @@ open class MovieRecommendationDataSource @Inject constructor(
             }
             networkState.postValue(NetworkState.Error())
         }) {
-            val response = movieService.getRecommendations(
+            val response = movieRepository.getRecommendations(
                 offset = PAGE_INIT_ELEMENTS,
                 limit = PAGE_MAX_ELEMENTS
             )
@@ -51,7 +51,7 @@ open class MovieRecommendationDataSource @Inject constructor(
             }
             networkState.postValue(NetworkState.Error(true))
         }) {
-            val response = movieService.getRecommendations(
+            val response = movieRepository.getRecommendations(
                 offset = params.key,
                 limit = PAGE_MAX_ELEMENTS
             )

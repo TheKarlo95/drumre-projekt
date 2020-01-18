@@ -10,10 +10,17 @@ class MoviePageDataSourceFactory @Inject constructor(
     private val providerDataSource: Provider<MoviePageDataSource>
 ) : DataSource.Factory<Int, Movie>() {
 
+    var query: String = ""
+        set(value) {
+            field = value
+            refresh()
+        }
+
     var sourceLiveData = MutableLiveData<MoviePageDataSource>()
 
     override fun create(): DataSource<Int, Movie> {
         val dataSource = providerDataSource.get()
+        dataSource.query = query
         sourceLiveData.postValue(dataSource)
         return dataSource
     }

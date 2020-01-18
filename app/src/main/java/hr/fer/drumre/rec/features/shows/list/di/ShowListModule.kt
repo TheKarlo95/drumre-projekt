@@ -3,9 +3,9 @@ package hr.fer.drumre.rec.features.shows.list.di
 import androidx.lifecycle.viewModelScope
 import dagger.Module
 import dagger.Provides
-import hr.fer.drumre.rec.core.di.scopes.FeatureScope
-import hr.fer.drumre.rec.core.network.services.ShowService
 import hr.fer.drumre.rec.commons.ui.extensions.viewModel
+import hr.fer.drumre.rec.core.di.scopes.FeatureScope
+import hr.fer.drumre.rec.core.repository.ShowRepository
 import hr.fer.drumre.rec.features.shows.list.ShowListFragment
 import hr.fer.drumre.rec.features.shows.list.ShowListViewModel
 import hr.fer.drumre.rec.features.shows.list.adapter.ShowListAdapter
@@ -23,9 +23,9 @@ class ShowListModule(private val fragment: ShowListFragment) {
     @Provides
     fun providesShowPageDataSource(
         viewModel: ShowListViewModel,
-        showService: ShowService
+        showRepository: ShowRepository
     ) = ShowPageDataSource(
-        showService = showService,
+        showRepository = showRepository,
         scope = viewModel.viewModelScope
     )
 

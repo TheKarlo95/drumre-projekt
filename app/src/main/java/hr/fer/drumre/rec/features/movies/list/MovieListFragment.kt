@@ -5,14 +5,15 @@ import android.view.View
 import androidx.navigation.fragment.findNavController
 import androidx.paging.PagedList
 import hr.fer.drumre.rec.App.Companion.coreComponent
-import hr.fer.drumre.rec.commons.ui.base.BaseFragment
-import hr.fer.drumre.rec.commons.ui.extensions.observe
-import hr.fer.drumre.rec.commons.ui.extensions.gridLayoutManager
-import hr.fer.drumre.rec.core.network.model.Movie
+import hr.fer.drumre.rec.MainActivity
 import hr.fer.drumre.rec.R
+import hr.fer.drumre.rec.commons.ui.base.BaseFragment
+import hr.fer.drumre.rec.commons.ui.extensions.gridLayoutManager
+import hr.fer.drumre.rec.commons.ui.extensions.observe
+import hr.fer.drumre.rec.core.network.model.Movie
 import hr.fer.drumre.rec.databinding.FragmentMovieListBinding
-import hr.fer.drumre.rec.features.movies.list.adapter.MovieListAdapter
 import hr.fer.drumre.rec.features.movies.list.adapter.MovieAdapterState
+import hr.fer.drumre.rec.features.movies.list.adapter.MovieListAdapter
 import hr.fer.drumre.rec.features.movies.list.di.DaggerMovieListComponent
 import hr.fer.drumre.rec.features.movies.list.di.MovieListModule
 import javax.inject.Inject
@@ -28,6 +29,7 @@ class MovieListFragment : BaseFragment<FragmentMovieListBinding, MovieListViewMo
         observe(viewModel.state, ::onViewStateChange)
         observe(viewModel.data, ::onViewDataChange)
         observe(viewModel.event, ::onViewEvent)
+        subscribeToSearch()
     }
 
     override fun onInitDependencyInjection() {
@@ -71,5 +73,17 @@ class MovieListFragment : BaseFragment<FragmentMovieListBinding, MovieListViewMo
                     MovieListFragmentDirections.goToDetails(viewEvent.movie)
                 )
         }
+    }
+
+    private fun subscribeToSearch() {
+        val mainActivity = activity as MainActivity
+        if (mainActivity.onQueryListeners["MovieListFragment"] == null) {
+            mainActivity.onQueryListeners["MovieListFragment"] = { viewModel.changeQuery(it) }
+        }
+    }
+
+    private fun unsubscribeToSearch() {
+        val mainActivity = activity as MainActivity
+        mainActivity.onQueryListeners.remove("MovieListFragment")
     }
 }

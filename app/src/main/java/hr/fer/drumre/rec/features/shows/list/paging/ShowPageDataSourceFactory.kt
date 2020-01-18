@@ -10,10 +10,17 @@ class ShowPageDataSourceFactory @Inject constructor(
     private val providerDataSource: Provider<ShowPageDataSource>
 ) : DataSource.Factory<Int, Show>() {
 
+    var query: String = ""
+        set(value) {
+            field = value
+            refresh()
+        }
+
     var sourceLiveData = MutableLiveData<ShowPageDataSource>()
 
     override fun create(): DataSource<Int, Show> {
         val dataSource = providerDataSource.get()
+        dataSource.query = query
         sourceLiveData.postValue(dataSource)
         return dataSource
     }

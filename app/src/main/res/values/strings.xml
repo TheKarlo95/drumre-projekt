@@ -13,6 +13,7 @@
     <string name="home_tab_random">Random</string>
 
     <!--Home toolbar items-->
+    <string name="home_search">Search</string>
     <string name="home_toolbar_theme">Toggle Theme</string>
 
     <!--Movie list-->

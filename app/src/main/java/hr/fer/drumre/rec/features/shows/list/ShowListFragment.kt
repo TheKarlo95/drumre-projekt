@@ -5,11 +5,12 @@ import android.view.View
 import androidx.navigation.fragment.findNavController
 import androidx.paging.PagedList
 import hr.fer.drumre.rec.App.Companion.coreComponent
-import hr.fer.drumre.rec.commons.ui.base.BaseFragment
-import hr.fer.drumre.rec.commons.ui.extensions.observe
-import hr.fer.drumre.rec.commons.ui.extensions.gridLayoutManager
-import hr.fer.drumre.rec.core.network.model.Show
+import hr.fer.drumre.rec.MainActivity
 import hr.fer.drumre.rec.R
+import hr.fer.drumre.rec.commons.ui.base.BaseFragment
+import hr.fer.drumre.rec.commons.ui.extensions.gridLayoutManager
+import hr.fer.drumre.rec.commons.ui.extensions.observe
+import hr.fer.drumre.rec.core.network.model.Show
 import hr.fer.drumre.rec.databinding.FragmentShowListBinding
 import hr.fer.drumre.rec.features.shows.list.adapter.ShowAdapterState
 import hr.fer.drumre.rec.features.shows.list.adapter.ShowListAdapter
@@ -28,6 +29,7 @@ class ShowListFragment : BaseFragment<FragmentShowListBinding, ShowListViewModel
         observe(viewModel.state, ::onViewStateChange)
         observe(viewModel.data, ::onViewDataChange)
         observe(viewModel.event, ::onViewEvent)
+        subscribeToSearch()
     }
 
     override fun onInitDependencyInjection() {
@@ -71,5 +73,17 @@ class ShowListFragment : BaseFragment<FragmentShowListBinding, ShowListViewModel
                     ShowListFragmentDirections.goToDetails(viewEvent.show)
                 )
         }
+    }
+
+    private fun subscribeToSearch() {
+        val mainActivity = activity as MainActivity
+        if (mainActivity.onQueryListeners["ShowListFragment"] == null) {
+            mainActivity.onQueryListeners["ShowListFragment"] = { viewModel.changeQuery(it) }
+        }
+    }
+
+    private fun unsubscribeToSearch() {
+        val mainActivity = activity as MainActivity
+        mainActivity.onQueryListeners.remove("ShowListFragment")
     }
 }

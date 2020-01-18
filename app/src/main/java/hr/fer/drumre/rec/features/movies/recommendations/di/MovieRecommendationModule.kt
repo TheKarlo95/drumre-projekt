@@ -5,7 +5,7 @@ import dagger.Module
 import dagger.Provides
 import hr.fer.drumre.rec.commons.ui.extensions.viewModel
 import hr.fer.drumre.rec.core.di.scopes.FeatureScope
-import hr.fer.drumre.rec.core.network.services.MovieService
+import hr.fer.drumre.rec.core.repository.MovieRepository
 import hr.fer.drumre.rec.features.movies.recommendations.MovieRecommendationFragment
 import hr.fer.drumre.rec.features.movies.recommendations.MovieRecommendationViewModel
 import hr.fer.drumre.rec.features.movies.recommendations.adapter.RecommendationAdapter
@@ -23,9 +23,9 @@ class MovieRecommendationModule(private val fragment: MovieRecommendationFragmen
     @Provides
     fun providesMovieRecommendationDataSource(
         viewModel: MovieRecommendationViewModel,
-        movieService: MovieService
+        movieRepository: MovieRepository
     ) = MovieRecommendationDataSource(
-        movieService = movieService,
+        movieRepository = movieRepository,
         scope = viewModel.viewModelScope
     )
 

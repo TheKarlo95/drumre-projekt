@@ -4,15 +4,15 @@ import androidx.lifecycle.MutableLiveData
 import androidx.paging.PageKeyedDataSource
 import hr.fer.drumre.rec.core.network.NetworkState
 import hr.fer.drumre.rec.core.network.model.Show
-import hr.fer.drumre.rec.core.network.services.ShowService
-import javax.inject.Inject
+import hr.fer.drumre.rec.core.repository.ShowRepository
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 import timber.log.Timber
+import javax.inject.Inject
 
 open class ShowRecommendationDataSource @Inject constructor(
-    private val showService: ShowService,
+    private val showRepository: ShowRepository,
     private val scope: CoroutineScope
 ) : PageKeyedDataSource<Int, Show>() {
 
@@ -31,7 +31,7 @@ open class ShowRecommendationDataSource @Inject constructor(
             }
             networkState.postValue(NetworkState.Error())
         }) {
-            val response = showService.getRecommendations(
+            val response = showRepository.getRecommendations(
                 offset = PAGE_INIT_ELEMENTS,
                 limit = PAGE_MAX_ELEMENTS
             )
@@ -51,7 +51,7 @@ open class ShowRecommendationDataSource @Inject constructor(
             }
             networkState.postValue(NetworkState.Error(true))
         }) {
-            val response = showService.getRecommendations(
+            val response = showRepository.getRecommendations(
                 offset = params.key,
                 limit = PAGE_MAX_ELEMENTS
             )

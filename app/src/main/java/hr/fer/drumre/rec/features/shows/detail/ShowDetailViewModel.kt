@@ -5,13 +5,13 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import hr.fer.drumre.rec.core.network.model.Show
-import hr.fer.drumre.rec.core.network.services.ShowService
+import hr.fer.drumre.rec.core.repository.ShowRepository
 import kotlinx.coroutines.launch
 import timber.log.Timber
 import javax.inject.Inject
 
 class ShowDetailViewModel @Inject constructor(
-    private val showService: ShowService
+    private val showRepository: ShowRepository
 ) : ViewModel() {
 
     private val _data = MutableLiveData<Show>()
@@ -38,7 +38,7 @@ class ShowDetailViewModel @Inject constructor(
         _state.postValue(ShowDetailViewState.Loading)
         viewModelScope.launch {
             try {
-                val show = showService.getRandom()
+                val show = showRepository.getRandom()
                 _data.postValue(show)
                 _state.postValue(ShowDetailViewState.Loaded)
             } catch (e: Exception) {
@@ -51,7 +51,7 @@ class ShowDetailViewModel @Inject constructor(
         _data.value?.let {
             viewModelScope.launch {
                 try {
-                    showService.addToFavorites(it.id)
+                    showRepository.addToFavorites(it.id)
                     _data.postValue(it.copy(isFavorite = true))
                     _state.postValue(ShowDetailViewState.AddedToFavorite)
                 } catch (e: Exception) {
@@ -65,7 +65,7 @@ class ShowDetailViewModel @Inject constructor(
         _data.value?.let {
             viewModelScope.launch {
                 try {
-                    showService.removeFromFavorites(it.id)
+                    showRepository.removeFromFavorites(it.id)
                     _data.postValue(it.copy(isFavorite = false))
                     _state.postValue(ShowDetailViewState.RemovedFromFavorite)
                 } catch (e: Exception) {

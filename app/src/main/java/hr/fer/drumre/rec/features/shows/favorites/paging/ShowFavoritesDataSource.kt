@@ -4,14 +4,14 @@ import androidx.lifecycle.MutableLiveData
 import androidx.paging.PageKeyedDataSource
 import hr.fer.drumre.rec.core.network.NetworkState
 import hr.fer.drumre.rec.core.network.model.Show
-import hr.fer.drumre.rec.core.network.services.ShowService
+import hr.fer.drumre.rec.core.repository.ShowRepository
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 open class ShowFavoritesDataSource @Inject constructor(
-    private val showService: ShowService,
+    private val showRepository: ShowRepository,
     private val scope: CoroutineScope
 ) : PageKeyedDataSource<Int, Show>() {
 
@@ -29,7 +29,7 @@ open class ShowFavoritesDataSource @Inject constructor(
             }
             networkState.postValue(NetworkState.Error())
         }) {
-            val response = showService.getFavorites(
+            val response = showRepository.getFavorites(
                 offset = PAGE_INIT_ELEMENTS,
                 limit = PAGE_MAX_ELEMENTS
             )
@@ -47,7 +47,7 @@ open class ShowFavoritesDataSource @Inject constructor(
             retry = { loadAfter(params, callback) }
             networkState.postValue(NetworkState.Error(true))
         }) {
-            val response = showService.getFavorites(
+            val response = showRepository.getFavorites(
                 offset = params.key,
                 limit = PAGE_MAX_ELEMENTS
             )

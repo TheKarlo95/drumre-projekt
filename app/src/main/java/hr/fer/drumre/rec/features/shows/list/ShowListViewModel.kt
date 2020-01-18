@@ -3,8 +3,6 @@ package hr.fer.drumre.rec.features.shows.list
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import androidx.paging.LivePagedListBuilder
-import hr.fer.drumre.rec.features.shows.list.ShowListViewEvent
-import hr.fer.drumre.rec.features.shows.list.ShowListViewState
 import hr.fer.drumre.rec.commons.ui.livedata.SingleLiveData
 import hr.fer.drumre.rec.core.network.NetworkState
 import hr.fer.drumre.rec.core.network.model.Show
@@ -44,6 +42,12 @@ class ShowListViewModel @Inject constructor(
                 } else {
                     ShowListViewState.Error
                 }
+        }
+    }
+
+    fun changeQuery(query: String) {
+        if (query != dataSourceFactory.query) {
+            dataSourceFactory.query = query
         }
     }
 

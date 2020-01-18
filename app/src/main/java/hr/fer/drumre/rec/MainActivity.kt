@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
@@ -26,6 +27,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     private val navController: NavController
         get() = findNavController(R.id.nav_host_fragment)
 
+    var onQueryListeners: MutableMap<String, (query: String) -> Unit> = hashMapOf()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -42,6 +45,16 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 actionView.setOnCheckedChangeListener { _, isChecked ->
                     themeUtils.setNightMode(isChecked, DELAY_TO_APPLY_THEME)
                 }
+            }
+        }
+        menu.findItem(R.id.menu_search).apply {
+            val actionView = this.actionView
+            if (actionView is SearchView) {
+                actionView.setOnQueryTextListener(DebouncedOnQueryTextListener {query ->
+                    onQueryListeners.values.forEach { listener ->
+                        listener(query)
+                    }
+                })
             }
         }
         return true

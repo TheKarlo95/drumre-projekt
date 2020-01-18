@@ -27,6 +27,13 @@ interface ShowService {
         @Query("limit") limit: Int
     ): List<Show>
 
+    @GET("Shows/Search")
+    suspend fun search(
+        @Query("query") query: String,
+        @Query("offset") offset: Int,
+        @Query("limit") limit: Int
+    ): List<Show>
+
     @GET("Recommendation/Shows/Random")
     suspend fun getRandom(): Show
 

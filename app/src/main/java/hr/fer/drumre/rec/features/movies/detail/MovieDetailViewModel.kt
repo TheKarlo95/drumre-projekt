@@ -5,13 +5,13 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import hr.fer.drumre.rec.core.network.model.Movie
-import hr.fer.drumre.rec.core.network.services.MovieService
+import hr.fer.drumre.rec.core.repository.MovieRepository
 import kotlinx.coroutines.launch
 import timber.log.Timber
 import javax.inject.Inject
 
 class MovieDetailViewModel @Inject constructor(
-    private val movieService: MovieService
+    private val movieRepository: MovieRepository
 ) : ViewModel() {
 
     private val _data = MutableLiveData<Movie>()
@@ -38,7 +38,7 @@ class MovieDetailViewModel @Inject constructor(
         _state.postValue(MovieDetailViewState.Loading)
         viewModelScope.launch {
             try {
-                val movie = movieService.getRandom()
+                val movie = movieRepository.getRandom()
                 _data.postValue(movie)
                 _state.postValue(MovieDetailViewState.Loaded)
             } catch (e: Exception) {
@@ -51,7 +51,7 @@ class MovieDetailViewModel @Inject constructor(
         _data.value?.let {
             viewModelScope.launch {
                 try {
-                    movieService.addToFavorites(it.id)
+                    movieRepository.addToFavorites(it.id)
                     data.value?.copy(isFavorite = true)?.let(_data::postValue)
                     _state.postValue(MovieDetailViewState.AddedToFavorite)
                 } catch (e: Exception) {
@@ -65,7 +65,7 @@ class MovieDetailViewModel @Inject constructor(
         _data.value?.let {
             viewModelScope.launch {
                 try {
-                    movieService.removeFromFavorites(it.id)
+                    movieRepository.removeFromFavorites(it.id)
                     data.value?.copy(isFavorite = false)?.let(_data::postValue)
                     _state.postValue(MovieDetailViewState.RemovedFromFavorite)
                 } catch (e: Exception) {

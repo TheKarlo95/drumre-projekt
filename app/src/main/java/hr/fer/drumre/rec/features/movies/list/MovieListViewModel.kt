@@ -45,6 +45,12 @@ class MovieListViewModel @Inject constructor(
         }
     }
 
+    fun changeQuery(query: String) {
+        if (query != dataSourceFactory.query) {
+            dataSourceFactory.query = query
+        }
+    }
+
     fun refreshLoadedCharactersList() {
         dataSourceFactory.refresh()
     }

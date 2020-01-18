@@ -3,17 +3,20 @@ package hr.fer.drumre.rec.core.di.modules
 import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides
-import hr.fer.drumre.rec.BuildConfig
 import hr.fer.drumre.rec.core.network.AuthorizationInterceptor
 import hr.fer.drumre.rec.core.network.services.MovieService
 import hr.fer.drumre.rec.core.network.services.ShowService
 import hr.fer.drumre.rec.core.network.services.UserService
+import hr.fer.drumre.rec.core.repository.MovieRepository
+import hr.fer.drumre.rec.core.repository.MovieRepositoryImpl
+import hr.fer.drumre.rec.core.repository.ShowRepository
+import hr.fer.drumre.rec.core.repository.ShowRepositoryImpl
 import hr.fer.drumre.rec.core.utils.UserPreferences
-import javax.inject.Singleton
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Singleton
 
 @Module
 class NetworkModule {
@@ -70,4 +73,14 @@ class NetworkModule {
     @Singleton
     @Provides
     fun provideUserService(retrofit: Retrofit) = retrofit.create(UserService::class.java)
+
+    @Singleton
+    @Provides
+    fun provideMovieRepository(movieService: MovieService): MovieRepository =
+        MovieRepositoryImpl(movieService)
+
+    @Singleton
+    @Provides
+    fun provideShowRepository(showService: ShowService): ShowRepository =
+        ShowRepositoryImpl(showService)
 }

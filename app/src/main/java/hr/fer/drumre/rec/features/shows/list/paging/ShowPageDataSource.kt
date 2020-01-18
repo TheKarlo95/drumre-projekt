@@ -4,7 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.paging.PageKeyedDataSource
 import hr.fer.drumre.rec.core.network.NetworkState
 import hr.fer.drumre.rec.core.network.model.Show
-import hr.fer.drumre.rec.core.network.services.ShowService
+import hr.fer.drumre.rec.core.repository.ShowRepository
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
@@ -12,9 +12,11 @@ import timber.log.Timber
 import javax.inject.Inject
 
 open class ShowPageDataSource @Inject constructor(
-    private val showService: ShowService,
+    private val showRepository: ShowRepository,
     private val scope: CoroutineScope
 ) : PageKeyedDataSource<Int, Show>() {
+
+    var query: String = ""
 
     val networkState = MutableLiveData<NetworkState>()
     var retry: (() -> Unit)? = null
@@ -31,7 +33,8 @@ open class ShowPageDataSource @Inject constructor(
             }
             networkState.postValue(NetworkState.Error())
         }) {
-            val response = showService.getAll(
+            val response = showRepository.getByQuery(
+                query = query,
                 offset = PAGE_INIT_ELEMENTS,
                 limit = PAGE_MAX_ELEMENTS
             )
@@ -51,7 +54,8 @@ open class ShowPageDataSource @Inject constructor(
             }
             networkState.postValue(NetworkState.Error(true))
         }) {
-            val response = showService.getAll(
+            val response = showRepository.getByQuery(
+                query = query,
                 offset = params.key,
                 limit = PAGE_MAX_ELEMENTS
             )

@@ -30,6 +30,13 @@ interface MovieService {
         @Query("limit") limit: Int
     ): List<Movie>
 
+    @GET("Movies/Search")
+    suspend fun search(
+        @Query("query") query: String,
+        @Query("offset") offset: Int,
+        @Query("limit") limit: Int
+    ): List<Movie>
+
     @PUT("Movies/{id}")
     suspend fun getById(
         @Path("id") movieId: Long

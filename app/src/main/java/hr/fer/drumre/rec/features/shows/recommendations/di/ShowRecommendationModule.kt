@@ -5,12 +5,12 @@ import dagger.Module
 import dagger.Provides
 import hr.fer.drumre.rec.commons.ui.extensions.viewModel
 import hr.fer.drumre.rec.core.di.scopes.FeatureScope
-import hr.fer.drumre.rec.core.network.services.ShowService
+import hr.fer.drumre.rec.core.repository.ShowRepository
 import hr.fer.drumre.rec.features.shows.recommendations.ShowRecommendationFragment
 import hr.fer.drumre.rec.features.shows.recommendations.ShowRecommendationViewModel
 import hr.fer.drumre.rec.features.shows.recommendations.adapter.RecommendationAdapter
-import hr.fer.drumre.rec.features.shows.recommendations.paging.ShowRecommendationDataSourceFactory
 import hr.fer.drumre.rec.features.shows.recommendations.paging.ShowRecommendationDataSource
+import hr.fer.drumre.rec.features.shows.recommendations.paging.ShowRecommendationDataSourceFactory
 
 @Module
 class ShowRecommendationModule(private val fragment: ShowRecommendationFragment) {
@@ -23,9 +23,9 @@ class ShowRecommendationModule(private val fragment: ShowRecommendationFragment)
     @Provides
     fun providesShowRecommendationDataSource(
         viewModel: ShowRecommendationViewModel,
-        showService: ShowService
+        showRepository: ShowRepository
     ) = ShowRecommendationDataSource(
-        showService = showService,
+        showRepository = showRepository,
         scope = viewModel.viewModelScope
     )
 
