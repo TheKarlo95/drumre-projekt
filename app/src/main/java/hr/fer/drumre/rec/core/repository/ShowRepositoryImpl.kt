@@ -21,7 +21,7 @@ class ShowRepositoryImpl @Inject constructor(
         showService.getRandom()
 
     override suspend fun getFavorites(offset: Int, limit: Int): List<Show> =
-        showService.getRecommendations(offset, limit)
+        showService.getFavorites(offset, limit)
 
     override suspend fun getById(showId: Long): Show =
         showService.getById(showId)

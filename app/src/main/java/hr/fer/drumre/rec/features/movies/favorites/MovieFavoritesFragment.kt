@@ -5,11 +5,11 @@ import android.view.View
 import androidx.navigation.fragment.findNavController
 import androidx.paging.PagedList
 import hr.fer.drumre.rec.App.Companion.coreComponent
-import hr.fer.drumre.rec.commons.ui.base.BaseFragment
-import hr.fer.drumre.rec.commons.ui.extensions.observe
-import hr.fer.drumre.rec.commons.ui.extensions.gridLayoutManager
-import hr.fer.drumre.rec.core.network.model.Movie
 import hr.fer.drumre.rec.R
+import hr.fer.drumre.rec.commons.ui.base.BaseFragment
+import hr.fer.drumre.rec.commons.ui.extensions.gridLayoutManager
+import hr.fer.drumre.rec.commons.ui.extensions.observe
+import hr.fer.drumre.rec.core.network.model.Movie
 import hr.fer.drumre.rec.databinding.FragmentMovieFavoritesBinding
 import hr.fer.drumre.rec.features.movies.favorites.adapter.FavoritesAdapter
 import hr.fer.drumre.rec.features.movies.favorites.adapter.MovieAdapterState
@@ -69,7 +69,7 @@ class MovieFavoritesFragment : BaseFragment<FragmentMovieFavoritesBinding, Movie
         when (viewEvent) {
             is MovieFavoritesViewEvent.OpenMovieDetail ->
                 findNavController().navigate(
-                    MovieFavoritesFragmentDirections.goToDetails(viewEvent.movie)
+                    MovieFavoritesFragmentDirections.goToDetails(viewEvent.movie.id)
                 )
         }
     }

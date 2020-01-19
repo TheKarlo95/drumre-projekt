@@ -3,9 +3,7 @@ package hr.fer.drumre.rec.core.network.model
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
-import java.time.Instant
-import java.time.LocalDate
-import java.util.*
+import java.util.Date
 
 @Parcelize
 data class Movie(
@@ -20,7 +18,7 @@ data class Movie(
     @SerializedName("original_language") val originalLanguage: String?,
     @SerializedName("genres") val genres: List<Genre>,
     @SerializedName("release_date") val releaseDate: Date?,
-    @SerializedName("nyt_review") val nyReview: NyReview? = null,
+    @SerializedName("nyt_review") val nyReview: String?,
     @SerializedName("isFavourite") val isFavorite: Boolean
 ) : Parcelable {
     val image: String

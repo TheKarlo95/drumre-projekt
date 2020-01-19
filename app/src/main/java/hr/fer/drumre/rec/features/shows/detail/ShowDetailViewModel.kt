@@ -22,11 +22,12 @@ class ShowDetailViewModel @Inject constructor(
     val state: LiveData<ShowDetailViewState>
         get() = _state
 
-    fun loadShow(movie: Show) {
-        _data.postValue(movie)
+    fun loadShow(showId: Long) {
         _state.postValue(ShowDetailViewState.Loading)
         viewModelScope.launch {
             try {
+                val show = showRepository.getById(showId)
+                _data.postValue(show)
                 _state.postValue(ShowDetailViewState.Loaded)
             } catch (e: Exception) {
                 _state.postValue(ShowDetailViewState.Error)

@@ -22,11 +22,12 @@ class MovieDetailViewModel @Inject constructor(
     val state: LiveData<MovieDetailViewState>
         get() = _state
 
-    fun loadMovie(movie: Movie) {
-        _data.postValue(movie)
+    fun loadMovie(movieId: Long) {
         _state.postValue(MovieDetailViewState.Loading)
         viewModelScope.launch {
             try {
+                val movie = movieRepository.getById(movieId)
+                _data.postValue(movie)
                 _state.postValue(MovieDetailViewState.Loaded)
             } catch (e: Exception) {
                 _state.postValue(MovieDetailViewState.Error)
@@ -44,6 +45,12 @@ class MovieDetailViewModel @Inject constructor(
             } catch (e: Exception) {
                 _state.postValue(MovieDetailViewState.Error)
             }
+        }
+    }
+
+    fun openNytReview(url: String?) {
+        if (!url.isNullOrEmpty()) {
+            _state.postValue(MovieDetailViewState.OpenNytReview(url))
         }
     }
 

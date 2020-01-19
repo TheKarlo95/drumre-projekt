@@ -22,7 +22,7 @@
         android:id="@+id/favorite_show_detail_fragment"
         android:name="hr.fer.drumre.rec.features.shows.detail.ShowDetailFragment">
         <argument
-            android:name="show"
-            app:argType="hr.fer.drumre.rec.core.network.model.Show" />
+            android:name="showId"
+            app:argType="long" />
     </fragment>
 </navigation>

@@ -70,7 +70,7 @@ class MovieListFragment : BaseFragment<FragmentMovieListBinding, MovieListViewMo
         when (viewEvent) {
             is MovieListViewEvent.OpenMovieDetail ->
                 findNavController().navigate(
-                    MovieListFragmentDirections.goToDetails(viewEvent.movie)
+                    MovieListFragmentDirections.goToDetails(viewEvent.movie.id)
                 )
         }
     }

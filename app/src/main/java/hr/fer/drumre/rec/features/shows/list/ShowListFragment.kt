@@ -70,7 +70,7 @@ class ShowListFragment : BaseFragment<FragmentShowListBinding, ShowListViewModel
         when (viewEvent) {
             is ShowListViewEvent.OpenShowDetail ->
                 findNavController().navigate(
-                    ShowListFragmentDirections.goToDetails(viewEvent.show)
+                    ShowListFragmentDirections.goToDetails(viewEvent.show.id)
                 )
         }
     }

@@ -37,7 +37,7 @@ interface MovieService {
         @Query("limit") limit: Int
     ): List<Movie>
 
-    @PUT("Movies/{id}")
+    @GET("Movies/{id}")
     suspend fun getById(
         @Path("id") movieId: Long
     ): Movie

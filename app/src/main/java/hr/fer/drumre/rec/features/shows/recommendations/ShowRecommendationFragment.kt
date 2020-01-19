@@ -5,14 +5,14 @@ import android.view.View
 import androidx.navigation.fragment.findNavController
 import androidx.paging.PagedList
 import hr.fer.drumre.rec.App.Companion.coreComponent
-import hr.fer.drumre.rec.commons.ui.base.BaseFragment
-import hr.fer.drumre.rec.commons.ui.extensions.observe
-import hr.fer.drumre.rec.commons.ui.extensions.gridLayoutManager
-import hr.fer.drumre.rec.core.network.model.Show
 import hr.fer.drumre.rec.R
+import hr.fer.drumre.rec.commons.ui.base.BaseFragment
+import hr.fer.drumre.rec.commons.ui.extensions.gridLayoutManager
+import hr.fer.drumre.rec.commons.ui.extensions.observe
+import hr.fer.drumre.rec.core.network.model.Show
 import hr.fer.drumre.rec.databinding.FragmentShowRecommendationsBinding
-import hr.fer.drumre.rec.features.shows.recommendations.adapter.ShowAdapterState
 import hr.fer.drumre.rec.features.shows.recommendations.adapter.RecommendationAdapter
+import hr.fer.drumre.rec.features.shows.recommendations.adapter.ShowAdapterState
 import hr.fer.drumre.rec.features.shows.recommendations.di.DaggerShowRecommendationComponent
 import hr.fer.drumre.rec.features.shows.recommendations.di.ShowRecommendationModule
 import javax.inject.Inject
@@ -68,7 +68,7 @@ class ShowRecommendationFragment : BaseFragment<FragmentShowRecommendationsBindi
         when (viewEvent) {
             is ShowRecommendationViewEvent.OpenShowDetail ->
                 findNavController().navigate(
-                    ShowRecommendationFragmentDirections.goToDetails(viewEvent.show)
+                    ShowRecommendationFragmentDirections.goToDetails(viewEvent.show.id)
                 )
         }
     }

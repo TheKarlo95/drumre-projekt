@@ -8,6 +8,8 @@ sealed class MovieDetailViewState : BaseViewState {
 
     object Error : MovieDetailViewState()
 
+    data class OpenNytReview(val url: String) : MovieDetailViewState()
+
     object AddedToFavorite : MovieDetailViewState()
 
     object RemovedFromFavorite : MovieDetailViewState()
@@ -19,6 +21,8 @@ sealed class MovieDetailViewState : BaseViewState {
     fun isLoading() = this is Loading
 
     fun isError() = this is Error
+
+    fun isOpenNytReview() = this is OpenNytReview
 
     fun isAddedToFavorite() = this is AddedToFavorite
 

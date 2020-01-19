@@ -5,11 +5,11 @@ import android.view.View
 import androidx.navigation.fragment.findNavController
 import androidx.paging.PagedList
 import hr.fer.drumre.rec.App.Companion.coreComponent
-import hr.fer.drumre.rec.commons.ui.base.BaseFragment
-import hr.fer.drumre.rec.commons.ui.extensions.observe
-import hr.fer.drumre.rec.commons.ui.extensions.gridLayoutManager
-import hr.fer.drumre.rec.core.network.model.Movie
 import hr.fer.drumre.rec.R
+import hr.fer.drumre.rec.commons.ui.base.BaseFragment
+import hr.fer.drumre.rec.commons.ui.extensions.gridLayoutManager
+import hr.fer.drumre.rec.commons.ui.extensions.observe
+import hr.fer.drumre.rec.core.network.model.Movie
 import hr.fer.drumre.rec.databinding.FragmentMovieRecommendationsBinding
 import hr.fer.drumre.rec.features.movies.recommendations.adapter.MovieAdapterState
 import hr.fer.drumre.rec.features.movies.recommendations.adapter.RecommendationAdapter
@@ -68,7 +68,7 @@ class MovieRecommendationFragment : BaseFragment<FragmentMovieRecommendationsBin
         when (viewEvent) {
             is MovieRecommendationViewEvent.OpenMovieDetail ->
                 findNavController().navigate(
-                    MovieRecommendationFragmentDirections.goToDetails(viewEvent.movie)
+                    MovieRecommendationFragmentDirections.goToDetails(viewEvent.movie.id)
                 )
         }
     }

@@ -2,6 +2,7 @@ package hr.fer.drumre.rec.core.repository
 
 import hr.fer.drumre.rec.core.network.model.Movie
 import hr.fer.drumre.rec.core.network.services.MovieService
+import timber.log.Timber
 import javax.inject.Inject
 
 class MovieRepositoryImpl @Inject constructor(
@@ -21,7 +22,12 @@ class MovieRepositoryImpl @Inject constructor(
         movieService.getRandom()
 
     override suspend fun getFavorites(offset: Int, limit: Int): List<Movie> =
-        movieService.getRecommendations(offset, limit)
+        try {
+            movieService.getFavorites(offset, limit)
+        } catch (e: Exception) {
+            Timber.e(e)
+            listOf()
+        }
 
     override suspend fun getById(movieId: Long): Movie =
         movieService.getById(movieId)

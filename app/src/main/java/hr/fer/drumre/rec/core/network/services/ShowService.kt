@@ -37,7 +37,7 @@ interface ShowService {
     @GET("Recommendation/Shows/Random")
     suspend fun getRandom(): Show
 
-    @PUT("Shows/{id}")
+    @GET("Shows/{id}")
     suspend fun getById(
         @Path("id") movieId: Long
     ): Show

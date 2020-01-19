@@ -1,13 +1,13 @@
 package hr.fer.drumre.rec.features.movies.detail
 
-import android.graphics.Color
+import android.content.Intent
 import android.graphics.drawable.Drawable
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.DrawableCompat
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
 import com.google.android.material.snackbar.Snackbar
 import hr.fer.drumre.rec.App.Companion.coreComponent
 import hr.fer.drumre.rec.R
@@ -19,11 +19,13 @@ import hr.fer.drumre.rec.features.movies.detail.di.DaggerMovieDetailComponent
 import hr.fer.drumre.rec.features.movies.detail.di.MovieDetailModule
 import javax.inject.Inject
 
+
 class MovieDetailFragment : BaseFragment<FragmentMovieDetailBinding, MovieDetailViewModel>(
     layoutId = R.layout.fragment_movie_detail
 ) {
 
-    @Inject lateinit var progressDialog: ProgressBarDialog
+    @Inject
+    lateinit var progressDialog: ProgressBarDialog
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -41,9 +43,9 @@ class MovieDetailFragment : BaseFragment<FragmentMovieDetailBinding, MovieDetail
                 viewModel.loadRandomMovie()
             } else {
                 val args = MovieDetailFragmentArgs.fromBundle(arguments!!)
-                viewModel.loadMovie(args.movie)
+                viewModel.loadMovie(args.movieId)
             }
-        } catch (e : IllegalStateException) {
+        } catch (e: IllegalStateException) {
             viewModel.loadRandomMovie()
         }
     }
@@ -67,6 +69,7 @@ class MovieDetailFragment : BaseFragment<FragmentMovieDetailBinding, MovieDetail
                 progressDialog.show(R.string.movie_detail_dialog_loading_text)
             is MovieDetailViewState.Error ->
                 progressDialog.dismissWithErrorMessage(R.string.movie_detail_dialog_error_text)
+            is MovieDetailViewState.OpenNytReview -> openUrl(viewState.url)
             is MovieDetailViewState.AddedToFavorite ->
                 Snackbar.make(
                     requireView(),
@@ -82,5 +85,10 @@ class MovieDetailFragment : BaseFragment<FragmentMovieDetailBinding, MovieDetail
             is MovieDetailViewState.Dismiss -> findNavController().navigateUp()
             is MovieDetailViewState.Loaded -> progressDialog.dismiss()
         }
+    }
+
+    private fun openUrl(url: String) {
+        val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+        startActivity(browserIntent)
     }
 }

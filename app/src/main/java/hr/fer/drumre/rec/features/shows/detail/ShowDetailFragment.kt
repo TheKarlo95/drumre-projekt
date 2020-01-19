@@ -1,17 +1,18 @@
 package hr.fer.drumre.rec.features.shows.detail
 
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.View
+import androidx.core.content.ContextCompat
+import androidx.core.graphics.drawable.DrawableCompat
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
 import com.google.android.material.snackbar.Snackbar
 import hr.fer.drumre.rec.App.Companion.coreComponent
+import hr.fer.drumre.rec.R
 import hr.fer.drumre.rec.commons.ui.base.BaseFragment
 import hr.fer.drumre.rec.commons.ui.extensions.observe
 import hr.fer.drumre.rec.commons.views.ProgressBarDialog
-import hr.fer.drumre.rec.R
 import hr.fer.drumre.rec.databinding.FragmentShowDetailBinding
-import hr.fer.drumre.rec.features.movies.detail.MovieDetailFragmentArgs
 import hr.fer.drumre.rec.features.shows.detail.di.DaggerShowDetailComponent
 import hr.fer.drumre.rec.features.shows.detail.di.ShowDetailModule
 import javax.inject.Inject
@@ -26,12 +27,19 @@ class ShowDetailFragment : BaseFragment<FragmentShowDetailBinding, ShowDetailVie
         super.onViewCreated(view, savedInstanceState)
         observe(viewModel.state, ::onViewStateChange)
 
+        val fab = viewBinding.removeFavoriteButton
+        val fabDrawable: Drawable = fab.drawable
+        DrawableCompat.setTint(
+            fabDrawable,
+            ContextCompat.getColor(requireContext(), R.color.favorite_red)
+        )
+
         try {
             if (arguments == null) {
                 viewModel.loadRandomShow()
             } else {
                 val args = ShowDetailFragmentArgs.fromBundle(arguments!!)
-                viewModel.loadShow(args.show)
+                viewModel.loadShow(args.showId)
             }
         } catch (e : IllegalStateException) {
             viewModel.loadRandomShow()

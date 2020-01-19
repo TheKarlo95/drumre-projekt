@@ -5,16 +5,16 @@ import android.view.View
 import androidx.navigation.fragment.findNavController
 import androidx.paging.PagedList
 import hr.fer.drumre.rec.App.Companion.coreComponent
-import hr.fer.drumre.rec.commons.ui.base.BaseFragment
-import hr.fer.drumre.rec.commons.ui.extensions.observe
-import hr.fer.drumre.rec.commons.ui.extensions.gridLayoutManager
-import hr.fer.drumre.rec.core.network.model.Show
 import hr.fer.drumre.rec.R
+import hr.fer.drumre.rec.commons.ui.base.BaseFragment
+import hr.fer.drumre.rec.commons.ui.extensions.gridLayoutManager
+import hr.fer.drumre.rec.commons.ui.extensions.observe
+import hr.fer.drumre.rec.core.network.model.Show
 import hr.fer.drumre.rec.databinding.FragmentShowFavoritesBinding
 import hr.fer.drumre.rec.features.shows.favorites.adapter.FavoritesAdapter
-import hr.fer.drumre.rec.features.shows.favorites.di.ShowFavoritesModule
 import hr.fer.drumre.rec.features.shows.favorites.adapter.ShowAdapterState
 import hr.fer.drumre.rec.features.shows.favorites.di.DaggerShowFavoritesComponent
+import hr.fer.drumre.rec.features.shows.favorites.di.ShowFavoritesModule
 import javax.inject.Inject
 
 class ShowFavoritesFragment : BaseFragment<FragmentShowFavoritesBinding, ShowFavoritesViewModel>(
@@ -69,7 +69,7 @@ class ShowFavoritesFragment : BaseFragment<FragmentShowFavoritesBinding, ShowFav
         when (viewEvent) {
             is ShowFavoritesViewEvent.OpenShowDetail ->
                 findNavController().navigate(
-                    ShowFavoritesFragmentDirections.goToDetails(viewEvent.show)
+                    ShowFavoritesFragmentDirections.goToDetails(viewEvent.show.id)
                 )
         }
     }
